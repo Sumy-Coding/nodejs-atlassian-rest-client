@@ -8,7 +8,7 @@ const https = require('https');
 
 console.log('Initiating REST request...');
 let username = 'anma0513';
-let password = 'i21IasiNC'
+let password = ''
 
 // rl.question('Password?', (pass) => {
 //     password = pass;
