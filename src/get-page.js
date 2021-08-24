@@ -16,4 +16,4 @@ httpsAgent: new https.Agent({
     rejectUnauthorized: false
   })}).then(res => {
       console.log(res.data);
-  })
+  });
