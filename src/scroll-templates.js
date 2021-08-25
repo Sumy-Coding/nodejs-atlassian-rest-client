@@ -1,15 +1,14 @@
 const axios = require('axios');
 const https = require('https');
-const { authData, CONF_URL } = require('./DATA')
+const { authData, CONF_URL } = require('./data')
 // const readline = require("readline");
 // const rl = readline.createInterface({
 //     input: process.stdin,
 //     output: process.stdout
 // });
 
-console.log('Initiating REST request...');
-
 module.exports = function getSpaceScrollTemplates(spaceKey) {
+    console.log('Initiating REST request...');
     axios.get(`${CONF_URL}/plugins/servlet/scroll-office/api/templates?spaceKey=${spaceKey}`, {
     headers: {
         "Authorization": `Basic ${authData}`

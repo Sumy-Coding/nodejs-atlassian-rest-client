@@ -1,6 +1,6 @@
 const axios = require('axios');
 const https = require('https');
-const { authData, CONF_URL } = require('./DATA')
+const { authData, CONF_URL } = require('./data')
 
 module.exports = function getPage(pageId) {
 
