@@ -4,6 +4,7 @@ const getDescendants = require("./getDescendants");
 const getSpacePagesByLabel = require("./getSpacePagesByLabel");
 const getScrollSpaceTemplates = require("./scroll-templates");
 const createPage = require("./createPage");
+const deleteLabel = require("./deleteLabel");
 
 const PAGE_ID = 1101617403;
 
@@ -12,8 +13,9 @@ async function init() {
   // getScrollSpaceTemplates('COG');
   //   getDescendants(PAGE_ID).then((res) => console.log(res.data));
   //   getSpacePagesByLabel("TEST", "test").then((res) => console.log(res.data));
-  createPage("TEST", "test 876", "this is body", PAGE_ID).then((res) =>
-    console.log(res.data)
-  );
+  // createPage("TEST", "test 876", "this is body", PAGE_ID).then((res) =>
+  //   console.log(res.data)
+  // );
+  deleteLabel(7962799, "error-template").then((res) => console.log(res.data));
 }
 init();
