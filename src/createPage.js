@@ -1,18 +1,18 @@
-const axios = require("axios");
-const https = require("https");
-const { authData, CONF_URL } = require("./data");
+const axios = require('axios');
+const https = require('https');
+const { authData, CONF_URL } = require('./data');
 
 module.exports = async function createPage(space, title, body, parent_id) {
-  console.log(">>> Initiating REST request...");
+  console.log('>>> Initiating REST request...');
 
   data = {
-    type: "page",
+    type: 'page',
     title: title,
     space: { key: space },
     body: {
       storage: {
         value: body,
-        representation: "storage",
+        representation: 'storage',
       },
     },
     ancestors: [{ id: parent_id }],
@@ -21,7 +21,7 @@ module.exports = async function createPage(space, title, body, parent_id) {
   return await axios.post(`${CONF_URL}/rest/api/content`, {
     headers: {
       Authorization: `Basic ${authData}`,
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     httpsAgent: new https.Agent({
       rejectUnauthorized: false,
