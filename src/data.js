@@ -1,13 +1,15 @@
+const dotenv = require('dotenv');
 // const username = 'cdhi5yfb';
-const username = 'beastiehut@gmail.com';
-const password = 'RtuJhOJZADwGBrJzofpBFCB8';
-const bassdevqa = 'https://bassdevqa.netcracker.com';
-const du = 'https://confluence-datacenter.du.ae';
-const bht = 'https://beastiehut.atlassian.net/wiki';
-const cloudToken = 'RtuJhOJZADwGBrJzofpBFCB8';
+dotenv.config();
+const username = process.env.username;
+const password = process.env.password;
+const bhPpassword = process.env.bhPpassword;
+const bassdevqa = process.env.bassdevqa;
+const du = process.env.du;
+const bh = process.env.bh;
+const cloudToken = process.env.cloudToken;
 
 module.exports = {
   authData: Buffer.from(`${username}:${password}`).toString('base64'),
-  CONF_URL: bht,
-  cloudToken,
+  CONF_URL: bh,
 };

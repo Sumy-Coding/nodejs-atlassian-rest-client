@@ -1,9 +1,9 @@
-const getPage = require('./get-page');
+const getPage = require('./getPage');
 const getChildren = require('./getChildren');
 const getDescendants = require('./getDescendants');
 const getSpacePagesByLabel = require('./getSpacePagesByLabel');
 const getScrollSpaceTemplates = require('./scroll-templates');
-const createPage = require('./getPage');
+const createPage = require('./createPage');
 const deleteLabel = require('./deleteLabel');
 const getPageLabels = require('./getPageLabels');
 const getPageCloud = require('./cloud/getPageCloud');
@@ -11,7 +11,9 @@ const getPageCloud = require('./cloud/getPageCloud');
 const PAGE_ID = 78020757;
 
 async function init() {
-  getPage(PAGE_ID).then((res) => console.log(res.data));
+  getPage(PAGE_ID)
+    .then((res) => console.log(res.data))
+    .catch((err) => console.log(err));
   // getScrollSpaceTemplates('COG');
   //   getDescendants(PAGE_ID).then((res) => console.log(res.data));
   //   getSpacePagesByLabel("TEST", "test").then((res) => console.log(res.data));
