@@ -6,8 +6,8 @@ module.exports = async function createPage(space, title, body, parent_id) {
   console.log(">>> Initiating REST request...");
 
   data = {
-    type: "page",
     title: title,
+    type: "page",
     space: { key: space },
     body: {
       storage: {
@@ -21,7 +21,9 @@ module.exports = async function createPage(space, title, body, parent_id) {
   // console.log(authData);
   console.log(JSON.stringify(data));
 
-  return await axios.post(`${CONF_URL}/rest/api/content`, {
+  return await axios({
+    method: "post",
+    url: `${CONF_URL}/rest/api/content`,
     headers: {
       Authorization: `Basic ${authData}`,
       "Content-Type": "application/json",
@@ -29,6 +31,6 @@ module.exports = async function createPage(space, title, body, parent_id) {
     httpsAgent: new https.Agent({
       rejectUnauthorized: false,
     }),
-    data: JSON.stringify(data),
+    data: data,
   });
 };

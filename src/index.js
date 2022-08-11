@@ -9,15 +9,17 @@ const getPageLabels = require("./getPageLabels");
 const getPageCloud = require("./cloud/getPageCloud");
 const createComment = require("./createComment");
 
-//http://localhost:7190/pages/editpage.action?pageId=1901014
-const PAGE_ID = 1901077;
-
 // todo GET /rest/api/content/{id}/restriction/byOperation
 // todo GET /rest/api/space/{spaceKey}/content
 // todo GET /rest/api/content/{id}/child/attachment
 // todo DELETE /rest/api/content/{id}/label/...
 
 async function init() {
+  //http://localhost:7190/pages/editpage.action?pageId=1901014
+  const PAGE_ID = 1901077;
+
+  const start = new Date();
+
   // == GET
   // getPage(PAGE_ID)
   //   .then((res) => console.log(res.data))
@@ -29,9 +31,22 @@ async function init() {
   //   getSpacePagesByLabel("TEST", "test").then((res) => console.log(res.data));
 
   // ====== Create Page =====
-  createPage("JS", "JS test", "this is body", PAGE_ID)
-    .then((res) => console.log(res.data))
-    .catch((err) => console.error(err));
+  // createPage("JS", "JS test", "this is body", PAGE_ID)
+  //   .then((res) => console.log(res.data))
+  //   .catch((err) => console.error(err));
+
+  // create several pages
+  const SIZE = 40;
+  for (let a = 30; a <= SIZE; a++) {
+    createPage("JS", `JS test ${a}`, `this is body test ${a}`, PAGE_ID)
+      .then((res) => {
+        // console.log(res.data);
+        if (a === SIZE) {
+          console.log(`>>> time taken is :: ${seconds}`);
+        }
+      })
+      .catch((err) => console.error(err));
+  }
 
   // ====== Create comment ======
   // createComment('TEST', 'test title', 'rest comment!', 1000, PAGE_ID).then(
@@ -49,6 +64,11 @@ async function init() {
 
   //   ---- CLOUD ---
   // getPageCloud(PAGE_ID).then((res) => console.log(res.data));
+
+  // CHECK
+  const end = new Date();
+  const seconds = (end.getTime() - start.getTime()) / 1000;
+  console.log(`>>> time taken is :: ${seconds}`);
 }
 
 // init
