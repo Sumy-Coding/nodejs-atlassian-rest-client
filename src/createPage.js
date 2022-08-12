@@ -18,9 +18,6 @@ module.exports = async function createPage(space, title, body, parent_id) {
     ancestors: [{ id: parent_id }],
   };
 
-  // console.log(authData);
-  console.log(JSON.stringify(data));
-
   return await axios({
     method: "post",
     url: `${CONF_URL}/rest/api/content`,

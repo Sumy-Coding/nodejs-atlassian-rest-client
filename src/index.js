@@ -16,9 +16,10 @@ const createComment = require("./createComment");
 
 async function init() {
   //http://localhost:7190/pages/editpage.action?pageId=1901014
-  const PAGE_ID = 1901077;
+  const PAGE_ID = 2621591;
 
   const start = new Date();
+  console.log(start);
 
   // == GET
   // getPage(PAGE_ID)
@@ -37,9 +38,11 @@ async function init() {
 
   // create several pages
   const SIZE = 40;
-  for (let a = 30; a <= SIZE; a++) {
-    createPage("JS", `JS test ${a}`, `this is body test ${a}`, PAGE_ID)
+  for (let a = 1; a <= SIZE; a++) {
+    createPage("JS", `JS test 33 ${a}`, `this is body test ${a}`, 2621589)
       .then((res) => {
+        const end = new Date();
+        console.log(end);
         // console.log(res.data);
         if (a === SIZE) {
           console.log(`>>> time taken is :: ${seconds}`);
