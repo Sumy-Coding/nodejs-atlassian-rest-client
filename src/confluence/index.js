@@ -1,13 +1,12 @@
-const getPage = require("./getPage.js");
-const getChildren = require("./getChildren.js");
-const getDescendants = require("./getDescendants.js");
-const getSpacePagesByLabel = require("./getSpacePagesByLabel.js");
-const getScrollSpaceTemplates = require("./scroll-templates.js");
-const createPage = require("./createPage.js");
-const deleteLabel = require("./deleteLabel.js");
-const getPageLabels = require("./getPageLabels.js");
-const getPageCloud = require("../cloud/getPageCloud.js");
-const createComment = require("./createComment.js");
+import {getPage} from "./getPage.js";
+import {getChildren} from "./getChildren.js";
+import {getDescendants} from "./getDescendants.js";
+//import {getSpacePagesByLabel} from "./getSpacePagesByLabel.js";
+import {createPage} from "./createPage.js";
+import {deleteLabel} from "./deleteLabel.js";
+import {getPageLabels} from "./getPageLabels.js";
+//import getPageCloud from "../cloud/getPageCloud.js";
+import {createComment} from "./createComment.js";
 
 // todo GET /rest/api/content/{id}/restriction/byOperation
 // todo GET /rest/api/space/{spaceKey}/content
@@ -15,18 +14,18 @@ const createComment = require("./createComment.js");
 // todo DELETE /rest/api/content/{id}/label/...
 
 async function init() {
-  //http://localhost:7190/pages/editpage.action?pageId=1901014
-  const PAGE_ID = 2621591;
+  //http://localhost:9230/pages/editpage.action?pageId=1901014
+  const PAGE_ID = 983041;
 
   const start = new Date();
   console.log(start);
 
-  // == GET
-  // getPage(PAGE_ID)
-  //   .then((res) => console.log(res.data))
-  //   .catch((err) => console.log(err));
+  // --------------- GET PAGE
+   getPage(PAGE_ID)
+     .then((res) => console.log(res.data))
+     .catch((err) => console.log(err));
 
-  // == SCROLL
+  // --------------- SCROLL Office
   // getScrollSpaceTemplates('COG');
   //   getDescendants(PAGE_ID).then((res) => console.log(res.data));
   //   getSpacePagesByLabel("TEST", "test").then((res) => console.log(res.data));
@@ -37,19 +36,19 @@ async function init() {
   //   .catch((err) => console.error(err));
 
   // create several pages
-  const SIZE = 40;
-  for (let a = 1; a <= SIZE; a++) {
-    createPage("JS", `JS test 33 ${a}`, `this is body test ${a}`, 2621589)
-      .then((res) => {
-        const end = new Date();
-        console.log(end);
-        // console.log(res.data);
-        if (a === SIZE) {
-          console.log(`>>> time taken is :: ${seconds}`);
-        }
-      })
-      .catch((err) => console.error(err));
-  }
+////  const SIZE = 40;
+//  for (let a = 1; a <= SIZE; a++) {
+ //   createPage("JS", `JS test 33 ${a}`, `this is body test ${a}`, 2621589)
+  //    .then((res) => {
+ //       const end = new Date();
+ //       console.log(end);
+ //       // console.log(res.data);
+ //       if (a === SIZE) {
+ //         console.log(`>>> time taken is :: ${seconds}`);
+ //       }
+ //     })
+ //     .catch((err) => console.error(err));
+ // }
 
   // ====== Create comment ======
   // createComment('TEST', 'test title', 'rest comment!', 1000, PAGE_ID).then(

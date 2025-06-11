@@ -3,7 +3,7 @@ import https from "https";
 import {authData, CONF_URL} from "./data.js";
 
 export async function getPage(pageId) {
-    console.log('>>> Initiating [getPage] request...');
+    console.log('  >>> Initiating [getPage] request...');
 
     return axios.get(`${CONF_URL}/rest/api/content/${pageId}`, {
         headers: {

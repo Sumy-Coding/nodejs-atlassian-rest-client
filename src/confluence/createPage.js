@@ -1,8 +1,8 @@
-const axios = require("axios");
-const https = require("https");
-const { authData, CONF_URL } = require("./data.js");
+import axios from "axios";
+import https from "https";
+import { authData, CONF_URL } from "./data.js";
 
-module.exports = async function createPage(space, title, body, parent_id) {
+export async function createPage(space, title, body, parent_id) {
   console.log(">>> Initiating REST request...");
 
   data = {

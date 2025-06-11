@@ -2,12 +2,9 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const username = process.env.username;
-const password = process.env.password;
-const bh = process.env.bh;
+const username = process.env.ATLAS_USER;
+const password = process.env['ATLAS_PASS'];
 const cloudToken = process.env.cloudToken;
 
-module.exports = {
-  authData: Buffer.from(`${username}:${password}`).toString("base64"),
-  CONF_URL: "http://localhost:7190",
-};
+export const authData = Buffer.from(`${username}:${password}`).toString("base64");
+export const CONF_URL = "http://localhost:9230";

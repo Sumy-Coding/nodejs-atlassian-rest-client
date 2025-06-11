@@ -3,7 +3,7 @@ import https from "https";
 import {authData, CONF_URL} from "./data.js";
 
 
-export async function getPageChildren(pageId) {
+export async function getDescendants(pageId) {
     console.log(">>> Initiating REST request...");
 
     return await axios.get(
