@@ -1,6 +1,6 @@
 import axios from "axios";
 import https from "https";
-import {authData, CONF_URL} from "./data.js";
+import {authData, CONF_URL} from "../../data.js";
 
 export function getSpaceScrollTemplates(spaceKey) {
     console.log('Initiating [getSpaceScrollTemplates] request...');

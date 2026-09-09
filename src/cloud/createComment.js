@@ -1,20 +1,19 @@
-import axios from "axios";
-import https from "https";
-import {authData, CONF_URL} from "./data.js";
+import {confluenceHost, cloudAuthData} from "../data.js";
 
 export async function createComment(
-    space,
+    spaceId,
     title,
     body,
     parentId,
     pageId
 ) {
-    console.log(">>> Initiating [createComment] request...");
+
+    console.info(">>> Initiating [CREATE Comment] request...");
 
     const data = {
         type: "comment",
         title: title,
-        space: {key: space},
+        space: {id: spaceId},
         body: {
             storage: {
                 value: body,
@@ -27,16 +26,17 @@ export async function createComment(
         },
     };
 
-    return await axios.post({
-        method: "post",
-        url: `${CONF_URL}/rest/api/content`,
+    const resp = await fetch({
+        method: "POST",
+        url: `${confluenceHost}/rest/api/content`,
         headers: {
-            Authorization: `Basic ${authData}`,
+            Authorization: `Basic ${cloudAuthData}`,
             "Content-Type": "application/json",
         },
-        httpsAgent: new https.Agent({
-            rejectUnauthorized: false,
-        }),
-        data: data,
+        data: JSON.stringify(data),
     });
+
+    console.log(resp.status)
+
+    return resp.json();
 }

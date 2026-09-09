@@ -1,12 +1,13 @@
 import axios from "axios";
 import https from "https";
-import {authData, CONF_URL} from "./data.js";
+import {authData, CONF_URL} from "../../data.js";
 
-export async function getSpacePagesByLabel(spaceKey, label) {
+
+export async function getDescendants(pageId) {
     console.log(">>> Initiating REST request...");
 
     return await axios.get(
-        `${CONF_URL}/rest/api/search?cql=space+=+${spaceKey}+and+type+=+"page"+and+label+%3D+${label}`,
+        `${CONF_URL}/rest/api/search?cql=type = "page" and ancestor+%3D+"${pageId}"`,
         {
             headers: {
                 Authorization: `Basic ${authData}`,

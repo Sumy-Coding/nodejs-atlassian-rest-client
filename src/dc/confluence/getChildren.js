@@ -1,6 +1,6 @@
 import https from "https";
 import axios from "axios";
-import {authData, CONF_URL} from "./data.js";
+import {authData, CONF_URL} from "../../data.js";
 
 export async function getChildren(pageId) {
     console.log(">>> Initiating 'getPageChildren' request...");
